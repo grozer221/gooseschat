@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://localhost:3000/socket.io/socket.io.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <form id="form">
+            <div>
+                <div>Введіть нікнейм:</div>
+                <input type="text" id="input-name">
+                <div>
+                    <button type="button" id="btn-login">Ввійти</button>
+                </div>
+                <div id="errorName" class="error">
+
+                </div>
+            </div>
+        </form>
+        <div id="chat" class="hidden">
+            <div id="online-users">
+                <div>Онлайн:</div>
+                <div id="list-online-users">
+
+                </div>
+            </div>
+            <div id="messages">
+
+            </div>
+            <div class="panel-send-message">
+                <div>
+                    <input type="text" id="input-message">
+                    <button type="button" id="btn-send">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
