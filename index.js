@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
         console.log(`user ${users[socket.id]} disconnected`);
         io.emit('notifyNameDisconnectedUser', users[socket.id]);
         delete users[socket.id];
-        io.emit('sendListActiveUsers', users);
+        io.emit('reloadListActiveUsers', users);
     });
 
     socket.on('sendMessageToServer', message => {

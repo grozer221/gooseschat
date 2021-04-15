@@ -12,7 +12,7 @@
     height: 100vh;
 }
 
-form{
+#form{
     background-color: deepskyblue;
     width: 30%;
     height: 30vh;
@@ -24,20 +24,20 @@ form{
     border-radius: 100px;
 }
 
-form > div{
+#form > div{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
 
-form  input, form button{
+#form  input, form button{
     margin: 5px;
     padding: 5px;
     border-radius: 10px;
 }
 
-form button{
+#form button{
     cursor: pointer;
 }
 
@@ -79,7 +79,7 @@ input, button{
 #messages{
     margin: 0 auto;
     width: 50%;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .hidden{
@@ -100,7 +100,7 @@ input, button{
     width: 15%;
     height: 50vh;
     background-color: deepskyblue;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 #list-online-users{

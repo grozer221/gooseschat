@@ -1,7 +1,9 @@
 'use strict'
 const socket = io();
 
-document.getElementById('btn-login').addEventListener('click',() => {
+const messagesBox = document.getElementById("messages");
+
+const loginHandler = () =>{
     document.getElementById('errorName').innerHTML = '';
     let nickName = document.getElementById('input-name').value;
     if(nickName === ''){
@@ -12,16 +14,29 @@ document.getElementById('btn-login').addEventListener('click',() => {
     document.getElementById('form').classList.toggle("hidden");
 
     socket.emit('enter', nickName);
-});
+    };
 
-document.getElementById('btn-send').addEventListener('click', () => {
+const sendHandler = () =>{
     let message  = document.getElementById('input-message');
     if(message.value === '')
         return;
     socket.emit('sendMessageToServer', message.value);
-    message.value = ' ';
+    message.value = '';
+};
+
+document.getElementById('btn-login').addEventListener('click', loginHandler);
+document.getElementById('input-name').addEventListener('keydown',
+    (key) =>{
+    if(key.code === "Enter")
+        loginHandler();
 });
 
+document.getElementById('btn-send').addEventListener('click', sendHandler);
+document.getElementById('input-message').addEventListener('keydown',
+    (key) =>{
+        if(key.code === "Enter")
+            sendHandler();
+    });
 socket.on('reloadListActiveUsers', users => {
     let divUsers = document.getElementById('list-online-users');
     let ulElem = document.createElement('ul');
@@ -73,6 +88,10 @@ socket.on('sendMessageToAllUsers', (users, obj) => {
     messageWraper.appendChild(elemMessage);
     let divMessages = document.getElementById('messages');
     divMessages.appendChild(messageWraper);
+    messagesBox.scrollTo({
+        top: messagesBox.scrollHeight,
+        behavior: "smooth"
+    });
 });
 
 
